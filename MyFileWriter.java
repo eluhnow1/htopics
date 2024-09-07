@@ -5,44 +5,25 @@ import java.nio.charset.StandardCharsets;
 
 public class MyFileWriter {
     public static void main(String[] args) {
-        String data = "Hello, World!";
-        String fileName1 = "example1.txt";
-        String fileName2 = "example2.txt";
-        String fileName3 = "example3.txt";
-        String fileName4 = "example4.txt";
-        String fileName5 = "example5.txt";
-
-        // 1. Using FileWriter
-        try (FileWriter writer = new FileWriter(fileName1)) {
-            writer.write(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 2. Using BufferedWriter
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName2))) {
-            bufferedWriter.write(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 3. Using FileOutputStream
-        try (FileOutputStream outputStream = new FileOutputStream(fileName3)) {
-            outputStream.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 4. Using BufferedOutputStream
-        try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(fileName4))) {
-            bufferedOutputStream.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        String hiddenFile = ".winkHomeworkWink.txt";
+        String hiddenFolder = ".topsecretfolder";
+        String regularFile = "MrTheissSecrets.txt";
+        String regularFileData = "Full Name: Andrew Steven Theiss\nPhone Number (Work?): 818-487-6566\nEmails: andrewtheiss@gmail.com, atheiss@hw.com\nAge: 35\nBirthdate: February 7, 1989\nCollege: UC Davis BS in Computer Science\nCity: Hermosa Beach, California\nWork Addresses: 12181 Bluff Creek Dr, Playa Vista, California, 90094, United States | 3700 Coldwater Canyon Ave, Studio City, CA 91604\nCovid Vaccinations: March 9th, 2021 and then April 13th, 2021 (Moderna both times)\nCar: 2017 Subaru Forester\nVehicle Identification Number: JF2SJALC2HH461880\nLicense Plate: 7VIX662\nEngine: 2.5 Liter Naturally Aspirated Engine\nPIN: 1174";
+        String hiddenFileData = "Super secret top secret password: ~f\\-=.<>˝Ô∆ßµ‰f4ggkos9";
+        
         // 5. Using Files (java.nio.file)
         try {
-            Files.write(Paths.get(fileName5), data.getBytes(StandardCharsets.UTF_8));
+            Files.write(Paths.get(hiddenFile), hiddenFileData.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Files.createDirectory(Paths.get(hiddenFolder));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Files.write(Paths.get(hiddenFolder, regularFile), regularFileData.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }
