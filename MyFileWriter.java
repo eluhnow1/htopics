@@ -28,4 +28,13 @@ public class MyFileWriter {
             e.printStackTrace();
         }
     }
+    private static void printFileSize(String fileName) {
+        try {
+            System.out.println(Files.size(Paths.get(fileName)));
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        
+    }
 }
