@@ -27,6 +27,8 @@ public class MyFileWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        printTotalFileSize("winkHomeworkWink.txt", ".topsecretfolder/MrTheissSecrets.txt");
     }
     private static void printFileSize(String fileName) {
         try {
@@ -37,7 +39,15 @@ public class MyFileWriter {
         }
         
     }
-    private static void printTotalFileSize(String... fileNames) {
-        System.out.println("Total size of all files: ...TBD... bytes");
+    
+    private static void printTotalFileSize(String... fileNames) { 
+        long totalSize = 0;
+        for (String fileName : fileNames) {
+            File file = new File(fileName);
+            if (file.exists()) {
+                totalSize += file.length();
+            }
+        }
+        System.out.println("Total size of all files: " + totalSize + " bytes");
     }
 }
